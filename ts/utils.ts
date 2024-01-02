@@ -1,4 +1,4 @@
-interface ListItem {
+export interface ListItem {
 	name: string,
 	price: number,
 	bought: boolean
@@ -17,4 +17,4 @@ export function formatCurrency(value: number) {
 			currency: 'BRL'
 		}
 	).format(value);
-}
+};

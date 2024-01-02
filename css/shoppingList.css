@@ -1,0 +1,80 @@
+header {
+	flex-direction: row;
+}
+
+header button {
+	width: 75px;
+	border-right: var(--item-border);
+	margin: 5px 0;
+	background-image: url('../assets/images/back.svg');
+	background-repeat: no-repeat;
+	background-position: center;
+	background-size: 30px;
+}
+
+header button:hover {
+	background-color: rgba(255, 255, 255, .25);
+}
+
+header button:active {
+	background-color: rgba(255, 255, 255, .5);
+}
+
+header #header-wrapper {
+	padding: 0 10px;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	flex: 1;
+}
+
+header h2 {
+	text-align: left;
+}
+
+header #header-info-wrapper {
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+}
+
+header p {
+	font-size: 12px;
+}
+
+li {
+	grid-template-columns: 33px 1fr 100px 30px;
+	padding-left: 5px;
+	padding-right: 5px;
+}
+
+li .checkbox {
+	width: 28px;
+	height: 28px;
+	border: 1px solid var(--header-bg-color);
+	background-color: white;
+
+}
+
+li.checked .checkbox {
+	background-image: url('../assets/images/tick.svg');
+	background-repeat: no-repeat;
+	background-position: center;
+	background-size: 20px;
+}
+
+li.checked input[type=text] {
+	text-decoration: line-through;
+}
+
+li input[type=tel] {
+	text-align: right;
+	width: 90px;
+}
+
+li .btn-delete {
+	background-image: url('../assets/images/delete.svg');
+	background-repeat: no-repeat;
+	background-position: center;
+	background-size: 20px;
+}

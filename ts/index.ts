@@ -2,22 +2,20 @@ import UserData from "./UserData.js";
 import ShoppingListItem, { formatCurrency } from "./utils.js";
 
 
-(document.querySelector('#btn-add') as HTMLButtonElement).addEventListener('click', () => { onAddClick() });
+(document.querySelector('#btn-add') as HTMLButtonElement).addEventListener('click', onAddClick);
 const ul = document.querySelector('ul')!;
+
+UserData.loadData();
+UserData.shoppingItems.forEach(item => {
+	addItem(item, false);
+});
+
 
 function onAddClick() {
 	const newItem = UserData.createShoppingListItem();
-	const li = document.createElement('li');
-	li.innerHTML = htmlItem(newItem);
-
-	const input = li.querySelector('input')!;
-	input.addEventListener('focus', (event: FocusEvent) => onItemFocus(event));
-	input.addEventListener('blur', () => onItemBlur(li));
-
-	(li.querySelector('.btn-delete') as HTMLButtonElement).addEventListener('click', (event: MouseEvent) => onDeleteClick(li));
-	ul.insertBefore(li, ul.firstChild);
-	console.log(UserData.shoppingItems);
-
+	addItem(newItem, true);
+	UserData.shoppingItems.unshift(newItem);
+	UserData.saveData();
 }
 
 function onItemFocus(e: FocusEvent) {
@@ -30,8 +28,33 @@ function onItemBlur(li: HTMLLIElement) {
 	UserData.saveData();
 }
 
+function onNextClick(li: HTMLLIElement) {
+	const idx = Array.from(ul.children).indexOf(li);
+	window.location.href = `./shopping_list.html?idx=${idx}`;
+}
+
 function onDeleteClick(li: HTMLLIElement) {
+	const idx = Array.from(ul.children).indexOf(li);
+	UserData.shoppingItems.splice(idx, 1);
 	li.remove();
+	UserData.saveData();
+}
+
+function addItem(item: ShoppingListItem, putBefore: boolean) {
+	const li = document.createElement('li');
+	li.innerHTML = createHTML(item);
+
+	const input = li.querySelector('input')!;
+	input.addEventListener('focus', (event: FocusEvent) => onItemFocus(event));
+	input.addEventListener('blur', () => onItemBlur(li));
+
+	(li.querySelector('.btn-next') as HTMLButtonElement).addEventListener('click', () => onNextClick(li));
+	(li.querySelector('.btn-delete') as HTMLButtonElement).addEventListener('click', () => onDeleteClick(li));
+	if (putBefore) {
+		ul.insertBefore(li, ul.firstChild);
+	} else {
+		ul.appendChild(li);
+	}
 }
 
 function getTotal(item: ShoppingListItem) {
@@ -42,8 +65,8 @@ function getItemsBought(item: ShoppingListItem): number {
 	return item.items.filter(item => item.bought).length;
 }
 
-function htmlItem(item: ShoppingListItem): string {
-	const result = `
+function createHTML(item: ShoppingListItem): string {
+	return `
 		<button class="btn-next"></button>
 		<div class="info-wrapper">
 			<div class="main-info-wrapper">
@@ -57,5 +80,4 @@ function htmlItem(item: ShoppingListItem): string {
 		</div>
 		<button class="btn-delete"></button>
 	`;
-	return result;
 }

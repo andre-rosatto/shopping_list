@@ -1,18 +1,23 @@
 const LOCAL_STORAGE = 'shopping-list-data';
 export default class UserData {
     static shoppingItems = [];
-    constructor() {
+    static createListItem() {
+        return {
+            name: '',
+            price: 0,
+            bought: false
+        };
     }
     static createShoppingListItem() {
-        const result = {
+        return {
             name: '27/12/2023',
             items: []
         };
-        this.shoppingItems.unshift(result);
-        return result;
     }
     static loadData() {
+        this.shoppingItems = JSON.parse(localStorage.getItem(LOCAL_STORAGE)) || [];
     }
     static saveData() {
+        localStorage.setItem(LOCAL_STORAGE, JSON.stringify(this.shoppingItems));
     }
 }
