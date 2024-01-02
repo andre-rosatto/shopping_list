@@ -1,0 +1,44 @@
+header h2 {
+	font-size: 30px;
+}
+
+li {
+	grid-template-columns: 50px 1fr 50px;
+}
+
+.btn-next {
+	background-image: url('../assets/images/next.svg');
+	background-size: 30px;
+}
+
+.btn-delete {
+	background-image: url('../assets/images/delete.svg');
+	background-size: 20px;
+}
+
+.info-wrapper {
+	display: flex;
+	flex-direction: column;
+}
+
+.main-info-wrapper,
+.shopping-info-wrapper {
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+}
+
+.main-info-wrapper input {
+	font-size: 18px;
+	flex: 1;
+}
+
+.main-info-wrapper .total {
+	font-size: 18px;
+	margin-left: 5px;
+}
+
+.shopping-info-wrapper p {
+	font-size: 12px;
+	padding-left: 5px;
+}

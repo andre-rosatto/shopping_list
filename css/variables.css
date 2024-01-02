@@ -1,0 +1,11 @@
+:root {
+	--bg-color: #123456;
+	--header-bg-color: #343434;
+	--header-color: white;
+	--btn-add-bg: linear-gradient(#5b6e7f, #243f57);
+	--btn-add-hover-bg: linear-gradient(#687d91, #2d4f6d);
+	--btn-add-active-bg: linear-gradient(#768da1, #3f6b92);
+	--item-border: 1px solid white;
+	--li-bg-color: #c0c0c0;
+	--li-even-bg-color: #d8d8d8;
+}
