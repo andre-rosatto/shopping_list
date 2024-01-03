@@ -90,13 +90,15 @@ footer {
 	width: 100%;
 	display: flex;
 	justify-content: space-evenly;
-	padding: 5px 0;
+	padding: 5px;
+	gap: 5px;
 }
 
 footer button {
 	background-color: var(--footer-button-bg-color);
 	font-size: 16px;
-	width: 150px;
+	max-width: 150px;
+	flex: 1;
 	height: 50px;
 	border: var(--footer-button-border);
 	border-radius: 5px;
@@ -107,4 +109,43 @@ footer button:disabled {
 	color: var(--footer-button-disabled-color);
 	border: var(--footer-button-disabled-border);
 	pointer-events: none;
+}
+
+@media screen and (max-width: 450px) {
+	header button {
+		width: 50px;
+		background-size: 20px;
+	}
+
+	header p {
+		font-size: 11px;
+	}
+
+	footer button {
+		height: 30x;
+		font-size: 12px;
+	}
+
+	li {
+		grid-template-columns: 23px 1fr 80px 20px;
+		padding-left: 5px;
+		padding-right: 5px;
+	}
+
+	li.checked .checkbox {
+		background-size: 15px;
+	}
+
+	li .checkbox {
+		width: 20px;
+		height: 20px;
+	}
+
+	li input[type=tel] {
+		width: 75px;
+	}
+
+	li .btn-delete {
+		background-size: 15px;
+	}
 }

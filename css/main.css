@@ -91,3 +91,29 @@ input:not(:focus) {
 	background: none;
 	border: 1px solid transparent;
 }
+
+@media screen and (max-width: 450px) {
+	header {
+		height: 50px;
+	}
+
+	header h2 {
+		font-size: 20px;
+	}
+
+	#btn-add {
+		height: 40px;
+	}
+
+	#btn-add img {
+		width: 20px;
+	}
+
+	input {
+		font-size: 14px;
+	}
+
+	li {
+		padding: 5px 0;
+	}
+}

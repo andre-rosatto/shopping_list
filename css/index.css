@@ -44,3 +44,33 @@ li {
 	font-size: 12px;
 	padding-left: 5px;
 }
+
+@media screen and (max-width: 450px) {
+	li {
+		padding: 5px 0;
+		grid-template-columns: 40px 1fr 40px;
+	}
+
+	.btn-next {
+		background-size: 20px;
+	}
+
+	.main-info-wrapper input {
+		margin-bottom: 0;
+		padding-left: 2px;
+	}
+
+	.main-info-wrapper .total {
+		font-size: 14px;
+		margin-left: 2px;
+	}
+
+	.shopping-info-wrapper p {
+		font-size: 11px;
+		padding-left: 2px;
+	}
+
+	.btn-delete {
+		background-size: 15px;
+	}
+}
