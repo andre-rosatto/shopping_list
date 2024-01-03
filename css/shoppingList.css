@@ -67,9 +67,14 @@ li.checked input[type=text] {
 	text-decoration: line-through;
 }
 
+li input[type=text] {
+	padding-left: 5px;
+}
+
 li input[type=tel] {
 	text-align: right;
-	width: 90px;
+	width: 100px;
+	padding-right: 5px;
 }
 
 li .btn-delete {
@@ -77,4 +82,29 @@ li .btn-delete {
 	background-repeat: no-repeat;
 	background-position: center;
 	background-size: 20px;
+}
+
+footer {
+	background-color: var(--header-bg-color);
+	border-top: var(--item-border);
+	width: 100%;
+	display: flex;
+	justify-content: space-evenly;
+	padding: 5px 0;
+}
+
+footer button {
+	background-color: var(--footer-button-bg-color);
+	font-size: 16px;
+	width: 150px;
+	height: 50px;
+	border: var(--footer-button-border);
+	border-radius: 5px;
+}
+
+footer button:disabled {
+	background-color: var(--footer-button-disabled-bg-color);
+	color: var(--footer-button-disabled-color);
+	border: var(--footer-button-disabled-border);
+	pointer-events: none;
 }
