@@ -125,6 +125,8 @@ footer button:disabled {
 		height: 40px;
 		font-size: 12px;
 		max-width: 125px;
+		padding-left: 2px;
+		padding-right: 2px;
 	}
 
 	li {
