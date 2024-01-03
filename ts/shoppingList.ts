@@ -1,6 +1,8 @@
 import UserData from "./UserData.js";
 import { ListItem, formatCurrency } from "./utils.js";
 
+const SESSION_STORAGE = 'shopping-list-copied-items';
+
 const param = (new URLSearchParams(window.location.search)).get('idx');
 if (!param) {
 	window.location.href = './';
@@ -10,7 +12,7 @@ const shoppingListIdx = parseInt(param!);
 const ul = document.querySelector('ul')!;
 
 let copiedItems: ListItem[] = [];
-const data = sessionStorage.getItem('shopping-list-copied-items');
+const data = sessionStorage.getItem(SESSION_STORAGE);
 if (data) {
 	copiedItems = JSON.parse(data);
 }
@@ -31,7 +33,7 @@ updateTotal();
 updateFooter();
 
 function onBackClick() {
-	sessionStorage.setItem('shopping-list-copied-items', JSON.stringify(copiedItems));
+	sessionStorage.setItem(SESSION_STORAGE, JSON.stringify(copiedItems));
 	window.location.href = `./`;
 }
 
@@ -40,6 +42,7 @@ function onAddClick() {
 	UserData.shoppingItems[shoppingListIdx].items.unshift(newItem);
 	UserData.saveData();
 	addItem(newItem, true);
+	((ul.firstChild as HTMLLIElement).querySelector('input[type=text]') as HTMLInputElement).focus();
 	updateItemCount();
 	updateTotal();
 	updateFooter();
