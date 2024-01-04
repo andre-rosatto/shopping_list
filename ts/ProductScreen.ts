@@ -141,6 +141,7 @@ export default class ProductScreen {
 		const li = this.newLi(product);
 		this.addLi(li, product);
 		UserData.saveData();
+		(li.querySelector('input[type=text]') as HTMLInputElement).focus();
 	}
 
 	onCheckboxClick(li: HTMLLIElement) {

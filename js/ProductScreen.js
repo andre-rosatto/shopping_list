@@ -126,6 +126,7 @@ export default class ProductScreen {
         const li = this.newLi(product);
         this.addLi(li, product);
         UserData.saveData();
+        li.querySelector('input[type=text]').focus();
     }
     onCheckboxClick(li) {
         li.classList.toggle('checked');
