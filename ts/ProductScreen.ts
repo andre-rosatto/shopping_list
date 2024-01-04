@@ -120,6 +120,7 @@ export default class ProductScreen {
 
 	updateToolbar() {
 		(document.querySelector('#btn-copy-unbought') as HTMLButtonElement).disabled = this.list!.products.find(product => !product.bought) === undefined;
+		(document.querySelector('#btn-copy-all') as HTMLButtonElement).disabled = this.list!.products.length === 0;
 		const pasteBtn = document.querySelector('#btn-paste') as HTMLButtonElement
 		pasteBtn.disabled = UserData.copiedProducts.length === 0;
 		pasteBtn.querySelector('span')!.innerText = UserData.copiedProducts.length.toString();
