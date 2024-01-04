@@ -1,5 +1,6 @@
+/*
 import UserData from "./UserData.js";
-import { ListItem, formatCurrency } from "./utils.js";
+import { Product, formatCurrency } from "./utils.js";
 
 const SESSION_STORAGE = 'shopping-list-copied-items';
 
@@ -11,17 +12,17 @@ const shoppingListIdx = parseInt(param!);
 
 const ul = document.querySelector('ul')!;
 
-let copiedItems: ListItem[] = [];
+let copiedItems: Product[] = [];
 const data = sessionStorage.getItem(SESSION_STORAGE);
 if (data) {
 	copiedItems = JSON.parse(data);
 }
 
 UserData.loadData();
-document.querySelector('header h2')!.innerHTML = UserData.shoppingItems[shoppingListIdx].name;
+document.querySelector('header h2')!.innerHTML = UserData.lists[shoppingListIdx].name;
 document.querySelector('header button')!.addEventListener('click', onBackClick);
 (document.querySelector('#btn-add') as HTMLButtonElement).addEventListener('click', onAddClick);
-UserData.shoppingItems[shoppingListIdx].items.forEach(item => {
+UserData.lists[shoppingListIdx].products.forEach(item => {
 	addItem(item, false);
 });
 (document.querySelector('#btn-copy-unbought') as HTMLButtonElement).addEventListener('click', onCopyUnboughtClick);
@@ -39,7 +40,7 @@ function onBackClick() {
 
 function onAddClick() {
 	const newItem = UserData.createListItem();
-	UserData.shoppingItems[shoppingListIdx].items.unshift(newItem);
+	UserData.lists[shoppingListIdx].products.unshift(newItem);
 	UserData.saveData();
 	addItem(newItem, true);
 	((ul.firstChild as HTMLLIElement).querySelector('input[type=text]') as HTMLInputElement).focus();
@@ -51,14 +52,14 @@ function onAddClick() {
 function onCheckboxClick(li: HTMLLIElement) {
 	li.classList.toggle('checked');
 	const itemIdx = Array.from(ul.children).indexOf(li);
-	UserData.shoppingItems[shoppingListIdx].items[itemIdx].bought = li.classList.contains('checked');
+	UserData.lists[shoppingListIdx].products[itemIdx].bought = li.classList.contains('checked');
 	updateFooter();
 	UserData.saveData();
 }
 
 function onNameBlur(target: HTMLInputElement, li: HTMLLIElement) {
 	const itemIdx = Array.from(ul.children).indexOf(li);
-	UserData.shoppingItems[shoppingListIdx].items[itemIdx].name = target.value;
+	UserData.lists[shoppingListIdx].products[itemIdx].name = target.value;
 	UserData.saveData();
 }
 
@@ -72,7 +73,7 @@ function onPriceInput(target: HTMLInputElement, li: HTMLLIElement) {
 	const itemIdx = Array.from(ul.children).indexOf(li);
 	const rawValue = getRawValue(target.value);
 	target.value = formatCurrency(rawValue);
-	UserData.shoppingItems[shoppingListIdx].items[itemIdx].price = rawValue;
+	UserData.lists[shoppingListIdx].products[itemIdx].price = rawValue;
 	updateTotal();
 }
 
@@ -82,7 +83,7 @@ function onPriceBlur() {
 
 function onDeleteClick(li: HTMLLIElement) {
 	const itemIdx = Array.from(ul.children).indexOf(li);
-	UserData.shoppingItems[shoppingListIdx].items.splice(itemIdx, 1);
+	UserData.lists[shoppingListIdx].products.splice(itemIdx, 1);
 	li.remove();
 	updateItemCount();
 	updateTotal();
@@ -91,12 +92,12 @@ function onDeleteClick(li: HTMLLIElement) {
 }
 
 function onCopyUnboughtClick() {
-	copiedItems = UserData.shoppingItems[shoppingListIdx].items.filter(item => !item.bought);
+	copiedItems = UserData.lists[shoppingListIdx].products.filter(item => !item.bought);
 	updateFooter();
 }
 
 function onCopyAllClick() {
-	copiedItems = [...UserData.shoppingItems[shoppingListIdx].items];
+	copiedItems = [...UserData.lists[shoppingListIdx].products];
 	updateFooter();
 }
 
@@ -105,7 +106,7 @@ function onPasteClick() {
 		const newItem = copiedItems[i];
 		newItem.bought = false;
 		addItem(newItem, true);
-		UserData.shoppingItems[shoppingListIdx].items.unshift(newItem);
+		UserData.lists[shoppingListIdx].products.unshift(newItem);
 	}
 	UserData.saveData();
 	updateFooter();
@@ -117,7 +118,7 @@ function getRawValue(value: string): number {
 	return result;
 }
 
-function addItem(item: ListItem, putBefore: boolean) {
+function addItem(item: Product, putBefore: boolean) {
 	const li = document.createElement('li');
 	li.innerHTML = createHTML();
 
@@ -155,18 +156,19 @@ function createHTML() {
 }
 
 function updateItemCount() {
-	(document.querySelector('#item-count') as HTMLSpanElement).innerText = UserData.shoppingItems[shoppingListIdx].items.length.toString();
+	(document.querySelector('#item-count') as HTMLSpanElement).innerText = UserData.lists[shoppingListIdx].products.length.toString();
 }
 
 function updateTotal() {
-	const total = UserData.shoppingItems[shoppingListIdx].items.reduce((acc: number, item) => acc + item.price, 0);
+	const total = UserData.lists[shoppingListIdx].products.reduce((acc: number, item) => acc + item.price, 0);
 	(document.querySelector('#total-value') as HTMLSpanElement).innerText = formatCurrency(total);
 }
 
 function updateFooter() {
-	(document.querySelector('#btn-copy-unbought') as HTMLButtonElement).disabled = UserData.shoppingItems[shoppingListIdx].items.find(item => !item.bought) === undefined;
-	(document.querySelector('#btn-copy-all') as HTMLButtonElement).disabled = UserData.shoppingItems[shoppingListIdx].items.length === 0;
+	(document.querySelector('#btn-copy-unbought') as HTMLButtonElement).disabled = UserData.lists[shoppingListIdx].products.find(item => !item.bought) === undefined;
+	(document.querySelector('#btn-copy-all') as HTMLButtonElement).disabled = UserData.lists[shoppingListIdx].products.length === 0;
 	const pasteBtn = document.querySelector('#btn-paste') as HTMLButtonElement;
 	pasteBtn.disabled = copiedItems.length === 0;
 	pasteBtn.querySelector('span')!.innerText = copiedItems.length.toString();
 }
+*/

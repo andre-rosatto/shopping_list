@@ -1,12 +1,13 @@
+/*
 import UserData from "./UserData.js";
-import ShoppingListItem, { formatCurrency } from "./utils.js";
+import List, { formatCurrency } from "./utils.js";
 
 
 (document.querySelector('#btn-add') as HTMLButtonElement).addEventListener('click', onAddClick);
 const ul = document.querySelector('ul')!;
 
 UserData.loadData();
-UserData.shoppingItems.forEach(item => {
+UserData.lists.forEach(item => {
 	addItem(item, false);
 });
 
@@ -14,7 +15,7 @@ UserData.shoppingItems.forEach(item => {
 function onAddClick() {
 	const newItem = UserData.createShoppingListItem();
 	addItem(newItem, true);
-	UserData.shoppingItems.unshift(newItem);
+	UserData.lists.unshift(newItem);
 	UserData.saveData();
 }
 
@@ -24,7 +25,7 @@ function onItemFocus(e: FocusEvent) {
 
 function onItemBlur(li: HTMLLIElement) {
 	const idx = Array.from(ul.children).indexOf(li);
-	UserData.shoppingItems[idx].name = li.querySelector('input')!.value;
+	UserData.lists[idx].name = li.querySelector('input')!.value;
 	UserData.saveData();
 }
 
@@ -35,12 +36,12 @@ function onNextClick(li: HTMLLIElement) {
 
 function onDeleteClick(li: HTMLLIElement) {
 	const idx = Array.from(ul.children).indexOf(li);
-	UserData.shoppingItems.splice(idx, 1);
+	UserData.lists.splice(idx, 1);
 	li.remove();
 	UserData.saveData();
 }
 
-function addItem(item: ShoppingListItem, putBefore: boolean) {
+function addItem(item: List, putBefore: boolean) {
 	const li = document.createElement('li');
 	li.innerHTML = createHTML(item);
 
@@ -57,15 +58,15 @@ function addItem(item: ShoppingListItem, putBefore: boolean) {
 	}
 }
 
-function getTotal(item: ShoppingListItem) {
-	return item.items.reduce((acc: number, item) => acc + item.price, 0);
+function getTotal(item: List) {
+	return item.products.reduce((acc: number, item) => acc + item.price, 0);
 }
 
-function getItemsBought(item: ShoppingListItem): number {
-	return item.items.filter(item => item.bought).length;
+function getItemsBought(item: List): number {
+	return item.products.filter(item => item.bought).length;
 }
 
-function createHTML(item: ShoppingListItem): string {
+function createHTML(item: List): string {
 	return `
 		<button class="btn-next"></button>
 		<div class="info-wrapper">
@@ -74,10 +75,11 @@ function createHTML(item: ShoppingListItem): string {
 				<p class="total">${formatCurrency(getTotal(item))}</p>
 			</div>
 			<div class="shopping-info-wrapper">
-				<p>Número de itens: <span class="total-itens">${item.items.length}</span></p>
-				<p>Itens adquiridos: <span class="bought-items">${getItemsBought(item)} / ${item.items.length}</span></p>
+				<p>Número de itens: <span class="total-itens">${item.products.length}</span></p>
+				<p>Itens adquiridos: <span class="bought-items">${getItemsBought(item)} / ${item.products.length}</span></p>
 			</div>
 		</div>
 		<button class="btn-delete"></button>
 	`;
 }
+*/

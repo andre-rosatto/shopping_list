@@ -1,15 +1,15 @@
-export interface ListItem {
+export interface Product {
 	name: string,
 	price: number,
 	bought: boolean
 };
 
-export default interface ShoppingListItem {
+export interface List {
 	name: string,
-	items: ListItem[]
+	products: Product[]
 };
 
-export function formatCurrency(value: number) {
+export default function formatCurrency(value: number) {
 	return new Intl.NumberFormat(
 		'pt-BR',
 		{

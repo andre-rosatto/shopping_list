@@ -1,8 +1,8 @@
-header {
+#product-screen header {
 	flex-direction: row;
 }
 
-header button {
+#product-screen header button {
 	width: 75px;
 	border-right: var(--item-border);
 	margin: 5px 0;
@@ -12,15 +12,15 @@ header button {
 	background-size: 30px;
 }
 
-header button:hover {
+#product-screen header button:hover {
 	background-color: rgba(255, 255, 255, .25);
 }
 
-header button:active {
+#product-screen header button:active {
 	background-color: rgba(255, 255, 255, .5);
 }
 
-header #header-wrapper {
+#product-screen header #header-wrapper {
 	padding: 0 10px;
 	display: flex;
 	flex-direction: column;
@@ -28,27 +28,27 @@ header #header-wrapper {
 	flex: 1;
 }
 
-header h2 {
+#product-screen header h2 {
 	text-align: left;
 }
 
-header #header-info-wrapper {
+#product-screen header #header-info-wrapper {
 	display: flex;
 	flex-direction: row;
 	justify-content: space-between;
 }
 
-header p {
+#product-screen header p {
 	font-size: 12px;
 }
 
-li {
+#product-screen li {
 	grid-template-columns: 33px 1fr 100px 30px;
 	padding-left: 5px;
 	padding-right: 5px;
 }
 
-li .checkbox {
+#product-screen li .checkbox {
 	width: 28px;
 	height: 28px;
 	border: 1px solid var(--header-bg-color);
@@ -56,35 +56,35 @@ li .checkbox {
 
 }
 
-li.checked .checkbox {
+#product-screen li.checked .checkbox {
 	background-image: url('../assets/images/tick.svg');
 	background-repeat: no-repeat;
 	background-position: center;
 	background-size: 20px;
 }
 
-li.checked input[type=text] {
+#product-screen li.checked input[type=text] {
 	text-decoration: line-through;
 }
 
-li input[type=text] {
+#product-screen li input[type=text] {
 	padding-left: 5px;
 }
 
-li input[type=tel] {
+#product-screen li input[type=tel] {
 	text-align: right;
 	width: 100px;
 	padding-right: 5px;
 }
 
-li .btn-delete {
+#product-screen li .btn-delete {
 	background-image: url('../assets/images/delete.svg');
 	background-repeat: no-repeat;
 	background-position: center;
 	background-size: 20px;
 }
 
-footer {
+#product-screen footer {
 	background-color: var(--header-bg-color);
 	border-top: var(--item-border);
 	width: 100%;
@@ -94,7 +94,7 @@ footer {
 	gap: 5px;
 }
 
-footer button {
+#product-screen footer button {
 	background-color: var(--footer-button-bg-color);
 	font-size: 16px;
 	max-width: 150px;
@@ -104,7 +104,7 @@ footer button {
 	border-radius: 5px;
 }
 
-footer button:disabled {
+#product-screen footer button:disabled {
 	background-color: var(--footer-button-disabled-bg-color);
 	color: var(--footer-button-disabled-color);
 	border: var(--footer-button-disabled-border);
@@ -112,16 +112,16 @@ footer button:disabled {
 }
 
 @media screen and (max-width: 450px) {
-	header button {
+	#product-screen header button {
 		width: 50px;
 		background-size: 20px;
 	}
 
-	header p {
+	#product-screen header p {
 		font-size: 11px;
 	}
 
-	footer button {
+	#product-screen footer button {
 		height: 40px;
 		font-size: 12px;
 		max-width: 125px;
@@ -129,26 +129,26 @@ footer button:disabled {
 		padding-right: 2px;
 	}
 
-	li {
+	#product-screen li {
 		grid-template-columns: 23px 1fr 80px 20px;
 		padding-left: 5px;
 		padding-right: 5px;
 	}
 
-	li.checked .checkbox {
+	#product-screen li.checked .checkbox {
 		background-size: 15px;
 	}
 
-	li .checkbox {
+	#product-screen li .checkbox {
 		width: 20px;
 		height: 20px;
 	}
 
-	li input[type=tel] {
+	#product-screen li input[type=tel] {
 		width: 75px;
 	}
 
-	li .btn-delete {
+	#product-screen li .btn-delete {
 		background-size: 15px;
 	}
 }
