@@ -195,10 +195,10 @@ export default class ProductScreen {
 	}
 
 	onPasteClick() {
-		for (let i = UserData.copiedProducts.length - 1; i >= 0; i--) {
-			const li = this.newLi(UserData.copiedProducts[i]);
-			this.addLi(li, UserData.copiedProducts[i]);
-		}
+		[...UserData.copiedProducts].reverse().forEach(product => {
+			const li = this.newLi(product);
+			this.addLi(li, product);
+		});
 		this.updateHeader();
 		UserData.saveData();
 	}

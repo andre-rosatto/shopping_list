@@ -8,8 +8,7 @@ const productScreen = new ProductScreen(onBackClick);
 listScreen.init();
 productScreen.init();
 
-// listScreen.show();
-productScreen.show(UserData.lists[0]);
+listScreen.show();
 
 function onNextClick() {
 	listScreen.hide();
