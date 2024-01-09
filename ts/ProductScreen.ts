@@ -141,6 +141,7 @@ export default class ProductScreen {
 		const li = this.newLi(product);
 		this.addLi(li, product);
 		UserData.saveData();
+		this.updateToolbar();
 		(li.querySelector('input[type=text]') as HTMLInputElement).focus();
 	}
 
