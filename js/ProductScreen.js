@@ -158,6 +158,7 @@ export default class ProductScreen {
         this.list.products.splice(itemIdx, 1);
         li.remove();
         this.updateHeader();
+        this.updateToolbar();
         UserData.saveData();
     }
     onCopyUnboughtClick() {
