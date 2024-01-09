@@ -1,4 +1,4 @@
-const staticCacheName = 'shopping-list-static-v1.3';
+const staticCacheName = 'shopping-list-static-v1.4';
 const assets = [
 	'/',
 	'/index.html',
